@@ -1,0 +1,292 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #243047;
+    background: linear-gradient(135deg, #e8efff, #f8faff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    color: white;
+    background: #4263eb;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #304fce;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d5dceb;
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4263eb;
+}
+
+.app {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.login-card {
+    max-width: 430px;
+    margin: auto;
+    padding: 36px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px #24304718;
+    text-align: center;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    margin: auto;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: #4263eb;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 25px;
+}
+
+.login-card > p {
+    color: #68748b;
+    line-height: 1.5;
+}
+
+#login-form {
+    display: grid;
+    gap: 12px;
+    margin-top: 26px;
+    text-align: left;
+}
+
+.error {
+    color: #c92a2a !important;
+    font-size: 14px;
+}
+
+.chat-card {
+    overflow: hidden;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px #24304718;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 24px;
+    color: white;
+    background: #243b73;
+}
+
+.chat-header h1 {
+    margin: 0 0 6px;
+}
+
+.chat-header p {
+    margin: 0;
+    color: #dce5ff;
+    font-size: 14px;
+}
+
+.secondary-button {
+    background: #ffffff20;
+    border: 1px solid #ffffff60;
+}
+
+.chat-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    min-height: 490px;
+}
+
+.participants {
+    padding: 22px 18px;
+    background: #f5f7fc;
+    border-right: 1px solid #e4e8f1;
+}
+
+.participants h2 {
+    margin-top: 0;
+    font-size: 17px;
+}
+
+#user-count {
+    color: #68748b;
+    font-size: 13px;
+}
+
+#user-list {
+    padding: 0;
+    list-style: none;
+}
+
+#user-list li {
+    padding: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+.user-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #2f9e44;
+}
+
+.conversation {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+}
+
+.messages {
+    flex: 1;
+    min-height: 330px;
+    max-height: 480px;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+.message {
+    margin-bottom: 16px;
+    overflow-wrap: anywhere;
+}
+
+.message-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.message-name {
+    font-weight: bold;
+    color: #304fce;
+}
+
+.message-time {
+    color: #8993a6;
+    font-size: 11px;
+}
+
+.message-content {
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.system-message {
+    margin: 12px 0;
+    padding: 9px;
+    border-radius: 8px;
+    background: #f0f3f9;
+    color: #68748b;
+    font-size: 13px;
+    text-align: center;
+}
+
+.message-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.message-form input {
+    min-width: 0;
+}
+
+.hint {
+    margin-bottom: 0;
+    color: #8993a6;
+    font-size: 12px;
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 10px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+
+    .chat-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .participants {
+        border-right: none;
+        border-bottom: 1px solid #e4e8f1;
+        padding: 14px 18px;
+    }
+
+    .participants h2 {
+        display: inline;
+        margin-right: 10px;
+    }
+
+    #user-count {
+        display: inline;
+    }
+
+    #user-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-bottom: 0;
+    }
+
+    .messages {
+        min-height: 280px;
+    }
+
+    .chat-header {
+        padding: 16px;
+    }
+
+    .chat-header h1 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Multiusuario</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <main class="app">
+        <section id="login-screen" class="login-card">
+            <div class="logo">CH</div>
+            <h1>Chat Multiusuario</h1>
+            <p>Comunícate en tiempo real dentro de tu red local.</p>
+
+            <form id="login-form">
+                <label for="username">Tu nombre</label>
+                <input
+                    id="username"
+                    type="text"
+                    maxlength="30"
+                    placeholder="Ej. Dalia"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit">Entrar al chat</button>
+            </form>
+            <p id="login-error" class="error"></p>
+        </section>
+
+        <section id="chat-screen" class="chat-card hidden">
+            <header class="chat-header">
+                <div>
+                    <h1>Chat Multiusuario</h1>
+                    <p id="connection-status">Conectando...</p>
+                </div>
+                <button id="leave-button" class="secondary-button">
+                    Salir
+                </button>
+            </header>
+
+            <div class="chat-layout">
+                <aside class="participants">
+                    <h2>Participantes</h2>
+                    <p id="user-count">0 conectados</p>
+                    <ul id="user-list"></ul>
+                </aside>
+
+                <section class="conversation">
+                    <div
+                        id="messages"
+                        class="messages"
+                        aria-live="polite"
+                        aria-label="Mensajes del chat"
+                    ></div>
+
+                    <form id="message-form" class="message-form">
+                        <input
+                            id="message-input"
+                            type="text"
+                            maxlength="1000"
+                            placeholder="Escribe un mensaje..."
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit">Enviar</button>
+                    </form>
+                    <p class="hint">
+                        Presiona Enter o haz clic en Enviar.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
