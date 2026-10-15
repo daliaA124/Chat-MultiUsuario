@@ -31,18 +31,14 @@ def current_timestamp():
 
 class ConnectionManager:
     def __init__(self):
-        # Cada conexión WebSocket tiene un nombre asociado.
         self.active_connections: dict[WebSocket, str] = {}
 
-        # Evita que dos tareas envíen simultáneamente
-        # datos a los mismos WebSockets.
         self.lock = asyncio.Lock()
 
     async def connect(self, websocket: WebSocket, username: str):
         await websocket.accept()
 
         async with self.lock:
-            # No permitir nombres duplicados.
             existing_names = {
                 name.casefold()
                 for name in self.active_connections.values()
@@ -88,7 +84,6 @@ class ConnectionManager:
             await self._broadcast(message)
 
     async def _broadcast(self, message: dict):
-        # Se envía el mismo mensaje a todos los participantes.
         disconnected = []
 
         for websocket in list(self.active_connections):
@@ -97,7 +92,6 @@ class ConnectionManager:
             except (WebSocketDisconnect, RuntimeError, OSError):
                 disconnected.append(websocket)
 
-        # Limpiar conexiones que ya no responden.
         for websocket in disconnected:
             self.active_connections.pop(websocket, None)
 
@@ -139,11 +133,9 @@ async def chat_endpoint(
 
     try:
         while True:
-            # Esperar un mensaje del usuario.
             content = await websocket.receive_text()
             content = content.strip()
 
-            # Ignorar mensajes vacíos y limitar su tamaño.
             if not content:
                 continue
 
@@ -155,7 +147,6 @@ async def chat_endpoint(
                 })
                 continue
 
-            # El servidor genera la fecha y hora.
             message = {
                 "type": "message",
                 "username": manager.active_connections.get(
@@ -165,7 +156,6 @@ async def chat_endpoint(
                 "timestamp": current_timestamp(),
             }
 
-            # Distribuir el mensaje a todos los conectados.
             await manager.broadcast(message)
 
     except WebSocketDisconnect:
